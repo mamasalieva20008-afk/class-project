@@ -41,7 +41,7 @@ class Student(AbstractUser):
         null=True, blank=True, verbose_name='Дата рождения'
     )
     gender = models.CharField(
-        max_length=1, choices=GENDER_CHOICES, blank=True, verbose_name='Пол'
+        max_length=1, choices=GENDER_CHOICES, verbose_name='Пол'
     )
     phone = models.CharField(
         max_length=20, blank=True, verbose_name='Телефон'
@@ -56,39 +56,31 @@ class Student(AbstractUser):
     student_id = models.CharField(
         max_length=20,
         unique=True,
-        null=True,
-        blank=True,
         verbose_name='Номер студенческого билета'
     )
     group = models.CharField(
         max_length=20,
-        blank=True,
         verbose_name='Учебная группа'
     )
     specialty = models.CharField(
         max_length=150,
-        blank=True,
         verbose_name='Специальность'
     )
     course = models.PositiveSmallIntegerField(
         choices=COURSE_CHOICES,
-        null=True,
-        blank=True,
         verbose_name='Курс'
     )
     admission_year = models.PositiveSmallIntegerField(
-        null=True,
-        blank=True,
         verbose_name='Год поступления'
     )
     education_form = models.CharField(
-        max_length=20, choices=EDUCATION_FORM_CHOICES,
-        blank=True,
+        max_length=20, 
+        choices=EDUCATION_FORM_CHOICES,
         verbose_name='Форма обучения'
     )
     funding = models.CharField(
-        max_length=20, choices=FUNDING_CHOICES,
-        blank=True,
+        max_length=20, 
+        choices=FUNDING_CHOICES,
         verbose_name='Основа обучения'
     )
     status = models.CharField(
