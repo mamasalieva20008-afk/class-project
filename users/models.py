@@ -1,4 +1,5 @@
 from django.db import models
+from academics.models import Group
 from django.contrib.auth.models import AbstractUser
 
 
@@ -58,9 +59,13 @@ class Student(AbstractUser):
         unique=True,
         verbose_name='Номер студенческого билета'
     )
-    group = models.CharField(
-        max_length=20,
-        verbose_name='Учебная группа'
+    group = models.ForeignKey(
+    Group,
+    on_delete=models.PROTECT,
+    related_name='students',
+    null=True,
+    blank=True,
+    verbose_name='Учебная группа',
     )
     specialty = models.CharField(
         max_length=150,

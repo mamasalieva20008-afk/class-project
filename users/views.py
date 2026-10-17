@@ -61,3 +61,13 @@ class StudentDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'users/student_confirm_delete.html'
     success_url = reverse_lazy('student-list')
     login_url = '/admin/login/'
+
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .serializers import StudentSerializer
+
+
+class StudentAPIViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.select_related('group').all()
+    serializer_class = StudentSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
