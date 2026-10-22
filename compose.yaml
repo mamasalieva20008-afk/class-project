@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    container_name: django_backend
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1"
+    volumes:
+      - type: bind
+        source: ./db.sqlite3
+        target: /app/db.sqlite3
+      - type: bind
+        source: ./media
+        target: /app/media
